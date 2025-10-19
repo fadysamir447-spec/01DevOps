@@ -1,0 +1,8 @@
+image:
+  repository: docker.io/YOUR_DH_USER/YOUR_IMAGE   # <- put a real repo you can push to
+  tag: "latest"
+
+service:
+  type: ClusterIP
+  port: 8080
+

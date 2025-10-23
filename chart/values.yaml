@@ -1,6 +1,9 @@
 image:
-  repository: docker.io/YOUR_DH_USER/YOUR_IMAGE   # <- put a real repo you can push to
-  tag: "latest"
+  repository: docker.io/fady414/first.project
+  tag: "main"
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
 
 service:
   type: ClusterIP

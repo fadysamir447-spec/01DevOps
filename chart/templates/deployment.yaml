@@ -2,19 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "first-project-app.fullname" . }}
-  labels: {{- include "first-project-app.labels" . | nindent 4 }}
+labels:
+  app.kubernetes.io/name: {{ include "first-project-app.name" . }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
-    matchLabels: {{- include "first-project-app.selectorLabels" . | nindent 6 }}
+    matchLabels:
+      app.kubernetes.io/name: {{ include "first-project-app.name" . }}
   template:
     metadata:
-      labels: {{- include "first-project-app.selectorLabels" . | nindent 8 }}
+      labels:
+        app.kubernetes.io/name: {{ include "first-project-app.name" . }}
     spec:
       containers:
         - name: app
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: 8080
 

@@ -1,7 +1,7 @@
 image:
   repository: docker.io/fady414/first.project
   tag: "main"
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 replicaCount: 1
 
